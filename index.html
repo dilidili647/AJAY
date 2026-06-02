@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAY UPI | India</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: #0b1220;
+            color: white;
+            min-height: 100vh;
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+
+        /* 固定顶部滚动条 - 彻底防闪烁 */
+        .marquee {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            background: #121b2e;
+            padding: 10px 0;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .marquee-inner {
+            display: inline-block;
+            animation: marquee 25s linear infinite;
+        }
+        .marquee-item {
+            display: inline-block;
+            margin-right: 60px;
+            color: #21d873;
+            font-weight: 600;
+            font-size: 15px;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* 二次确认弹窗样式 */
+        .confirm-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 99999;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background: #121b2e;
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            border: 2px solid #21d873;
+        }
+        .modal-content h3 {
+            color: #21d873;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        .modal-content p {
+            color: #a0aec0;
+            margin-bottom: 30px;
+        }
+        .modal-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        .confirm-btn {
+            background: #21d873;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            color: #0b1220;
+        }
+        .cancel-btn {
+            background: #718096;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 顶部滚动条 -->
+<div class="marquee">
+    <div class="marquee-inner" id="marqueeBox"></div>
+</div>
+
+<!-- 二次确认弹窗 -->
+<div class="confirm-modal" id="joinConfirmModal">
+    <div class="modal-content">
+        <h3>Join VIP Channel</h3>
+        <p>Click confirm to join our Telegram VIP channel and get exclusive benefits!</p>
+        <div class="modal-buttons">
+            <button class="cancel-btn" onclick="closeConfirmModal()">Cancel</button>
+            <button class="confirm-btn" onclick="joinTelegramChannel()">Confirm & Join VIP</button>
+        </div>
+    </div>
+</div>
+
+<!-- 页面内容 -->
+<div style="background:#0f1726; padding:20px; text-align:center;">
+    <div style="font-size:24px; font-weight:bold; color:#21d873;">AJAY UPI Platform</div>
+</div>
+
+<div style="padding:60px 20px; text-align:center;">
+    <h1>AJAY UPI - Trusted & Stable Platform</h1>
+    <p style="color:#a0aec0; margin:15px 0 30px 0;">Professional service, 24/7 online support, fast withdrawals</p>
+    <button onclick="openConfirmModal()" style="background:#21d873; border:none; padding:14px 32px; border-radius:8px; font-weight:bold; font-size:16px; cursor:pointer;">Join Now</button>
+</div>
+
+<div style="background:#0f1726; padding:40px 20px; text-align:center;">
+    <h2 style="color:#21d873; margin-bottom:20px;">🔥 Daily Bonus Activity</h2>
+    <div style="max-width:600px; margin:0 auto; background:#121b2e; border-radius:12px; padding:25px; text-align:left; margin-bottom:20px;">
+        <p>Daily Personal Purchase Total Rewards:</p>
+        <p><strong>10,000 ₹ → Reward 50 ₹</strong></p>
+        <p><strong>20,000 ₹ → Reward 100 ₹</strong></p>
+        <p><strong>30,000 ₹ → Reward 200 ₹</strong></p>
+        <p><strong>50,000 ₹ → Reward 500 ₹</strong></p>
+        <p><strong>70,000 ₹ → Reward 700 ₹</strong></p>
+        <p><strong>100,000 ₹ → Reward 1000 ₹</strong></p>
+    </div>
+    <div style="max-width:600px; margin:0 auto; background:#121b2e; border-radius:12px; padding:25px; text-align:left; margin-bottom:20px;">
+        <h2 style="color:#21d873; font-size:19px; margin-bottom:10px;">New User Bonus</h2>
+        <p><strong>Complete New Task (Deposit 1000 ₹) → Get 200 ₹ Reward</strong></p>
+    </div>
+    <div style="max-width:600px; margin:0 auto; background:#121b2e; border-radius:12px; padding:25px; text-align:left;">
+        <h2 style="color:#21d873; font-size:19px; margin-bottom:10px;">Team Leader Incentive</h2>
+        <p>Extra rewards for completing team targets:</p>
+        <p><strong>Daily 200,000 ₹ → 1% Extra Bonus</strong></p>
+        <p><strong>Daily 500,000 ₹ → 1.5% Extra Bonus</strong></p>
+        <p><strong>Daily 1,000,000 ₹ → 1.5% Extra Bonus</strong></p>
+    </div>
+</div>
+
+<div style="padding:40px 20px;">
+    <h2 style="text-align:center; margin-bottom:30px;">Why Choose AJAY UPI</h2>
+    <div style="max-width:800px; margin:auto; display:grid; gap:20px;">
+        <div style="background:#121b2e; padding:20px; border-radius:10px;">
+            <h3 style="color:#21d873;">⚡ UPI Instant Transaction</h3>
+            <p>Deposit and withdrawal within minutes.</p>
+        </div>
+        <div style="background:#121b2e; padding:20px; border-radius:10px;">
+            <h3 style="color:#21d873;">🛡️ Stable & Secure System</h3>
+            <p>Advanced security protection, stable operation for a long time.</p>
+        </div>
+        <div style="background:#121b2e; padding:20px; border-radius:10px;">
+            <h3 style="color:#21d873;">👨‍💻 24/7 Customer Support</h3>
+            <p>Professional online service team ready to help you anytime.</p>
+        </div>
+        <div style="background:#121b2e; padding:20px; border-radius:10px;">
+            <h3 style="color:#21d873;">🎁 Generous Bonus Policy</h3>
+            <p>Deposit any amount and get 3.5% profit, fully withdrawable.</p>
+        </div>
+    </div>
+</div>
+
+<div style="background:#0f1726; padding:40px 20px; text-align:center;">
+    <button onclick="openConfirmModal()" style="background:#21d873; border:none; padding:14px 32px; border-radius:8px; font-weight:bold; font-size:16px; cursor:pointer;">Join Now</button>
+</div>
+
+<div style="text-align:center; padding:25px; color:#718096; font-size:13px;">
+    © 2026 AJAY UPI Platform. All rights reserved.
+</div>
+
+<div style="position:fixed; bottom:30px; right:20px; display:flex; flex-direction:column; gap:12px; z-index:999;">
+    <a href="javascript:openConfirmModal()" target="_blank"><div style="width:50px;height:50px;background:#0088cc;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:24px;cursor:pointer;">💬</div></a>
+    <a href="javascript:openConfirmModal()" target="_blank"><div style="width:50px;height:50px;background:#0088cc;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:24px;cursor:pointer;">📢</div></a>
+</div>
+
+<script>
+    // 9个TG群组链接 【随机分流列表】
+    const TG_GROUP_LIST = [
+        "https://t.me/+js9lLPfAN5wzNmFl"
+    ];
+
+    // 随机获取一个群组链接
+    function getRandomGroupLink() {
+        const randomIndex = Math.floor(Math.random() * TG_GROUP_LIST.length);
+        return TG_GROUP_LIST[randomIndex];
+    }
+
+    // 打开二次确认弹窗
+    function openConfirmModal() {
+        const modal = document.getElementById('joinConfirmModal');
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    // 关闭二次确认弹窗
+    function closeConfirmModal() {
+        const modal = document.getElementById('joinConfirmModal');
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // 跳转到 随机TG群组
+    function joinTelegramChannel() {
+        const randomLink = getRandomGroupLink();
+        window.open(randomLink, '_blank');
+        closeConfirmModal();
+    }
+
+    // 点击弹窗外层关闭
+    document.getElementById('joinConfirmModal').addEventListener('click', function(e) {
+        if (e.target === this) closeConfirmModal();
+    });
+
+    // ESC关闭弹窗
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeConfirmModal();
+    });
+
+    // 名字库
+    const names = [
+        "Arjun", "Vijay", "Raj", "Suresh", "Amit", "Rahul", "AJAY",
+        "Sunil", "Mahesh", "Ravi", "Anil", "Prakash", "Karan", "Deepak",
+        "Priya", "Sneha", "Anjali", "Pooja", "Sita", "Laxmi", "Meera"
+    ];
+
+    // 10000 以上随机金额
+    function getRandomAmount() {
+        return Math.floor(Math.random() * 90000) + 10000;
+    }
+
+    // 3个不重复随机名字
+    function getRandomUsers() {
+        let temp = [...names];
+        let res = [];
+        for(let i=0;i<3;i++){
+            let idx = Math.floor(Math.random() * temp.length);
+            res.push(temp.splice(idx,1)[0]);
+        }
+        return res;
+    }
+
+    // 生成滚动内容
+    function generateMarquee() {
+        const box = document.getElementById('marqueeBox');
+        const users = getRandomUsers();
+        let html = '';
+        users.forEach(name => {
+            const amt = getRandomAmount().toLocaleString('en-IN');
+            html += `<span class="marquee-item">User ${name} earned ₹${amt} on AJAY UPI</span>`;
+        });
+        box.innerHTML = html;
+    }
+
+    generateMarquee();
+    
+    function startMarquee() {
+        generateMarquee();
+        const el = document.querySelector('.marquee-inner');
+        el.style.animation = 'none';
+        el.offsetHeight;
+        el.style.animation = 'marquee 25s linear infinite';
+    }
+
+    setInterval(startMarquee, 25000);
+</script>
+
+</body>
+</html>
